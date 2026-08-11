@@ -1,12 +1,12 @@
 # Umbra Studio
 
-Software engineering practice of **Miles Lewis** — Carrollton, TX. I design multi-agent
+Software engineering practice of **Miles Lewis**, Carrollton, TX. I design multi-agent
 development systems and ship the production software they produce: live web platforms, a C++
 multiplayer game service, and a from-scratch Unity client, all built and operated solo.
 
 > **Why the repos are private:** client ownership, live-service security, and commercial code.
 > Publishing a live game server's source hands exploiters a map; publishing a payment platform's
-> auth internals does the same. I'm happy to screen-share any codebase live — walkthroughs on
+> auth internals does the same. I'm happy to screen-share any codebase live. Walkthroughs on
 > request: [miles@umbrastudio.io](mailto:miles@umbrastudio.io)
 
 ---
@@ -26,9 +26,9 @@ not the output, is the part that transfers:
 - **Deterministic verification over trust.** Where tests are impractical, I verify by
   byte-identity: pinned encryption parameters so identical sources compile to byte-identical
   artifacts, round-trip validators requiring byte equality, and an acceptance rule that changed
-  behavior must be *observed*, not inferred. Where a model produces a number, code recomputes it —
-  macros recalculated from the database, form-analysis scores recomputed server-side from issue
-  severities.
+  behavior must be *observed*, not inferred. Where a model produces a number, code recomputes it.
+  Macros are recalculated from the database; form-analysis scores are recomputed server-side from
+  issue severities.
 - **A kill switch that gets used.** I removed an autonomous outreach system after it fabricated
   claims about real prospects, and shelved a finished product when a platform capability erased
   its differentiator. Knowing when to stop is part of the method.
@@ -37,45 +37,45 @@ not the output, is the part that transfers:
 
 ## Systems
 
-### Chaos Pirates — live multiplayer game platform · [chaospirates.com](https://chaospirates.com)
+### Chaos Pirates, live multiplayer game platform · [chaospirates.com](https://chaospirates.com)
 Inherited C++ four-daemon server cluster (five world processes, 31 maps) plus a from-scratch
-Unity desktop/mobile client — ~150,000 lines of original C# implementing the server's immutable
-600-opcode binary protocol.
+Unity desktop/mobile client: roughly 150,000 lines of original C# implementing the server's
+immutable 600-opcode binary protocol.
 
 - Removed an unauthenticated RCE path in inherited server code; parameterized 48 client-reachable SQL call sites
 - Root-caused a compound outage (use-after-free in live config reload, zombie crash handler, process-existence health check) and replaced it with a loop-counter liveness probe per world
-- Both ends of a signed update chain: server-side release tooling signs 31,000-file patch manifests with RSA-3072-PSS over BLAKE2s-256; the client verifies with a PSS implementation written from RFC 8017 because Unity's Mono rejects the padding mode
+- Both ends of a signed update chain: server-side release tooling signs 31,000-file patch manifests with RSA-3072-PSS over BLAKE2s-256, and the client verifies with a PSS implementation written from RFC 8017 because Unity's Mono rejects the padding mode
 - Eight cryptographic primitives implemented against platform limits, each verified against published test vectors; CI runs 12 golden round-trip suites over 11 proprietary binary formats on every push
 
-### Resolve Change — training business platform · [resolvechange.com](https://resolvechange.com)
+### Resolve Change, training business platform · [resolvechange.com](https://resolvechange.com)
 Self-hosted production system on EC2 (nginx, PM2 under systemd) running a live personal-training
-business since 2020 — 274 HTTP handlers, 64-model schema, billing, scheduling, client programs.
+business since 2020: 274 HTTP handlers, 64-model schema, billing, scheduling, client programs.
 
-- Central authorization module whose ownership predicate *is* the lookup query — closed 8 IDOR vulnerabilities as a class, not one at a time
+- Central authorization module whose ownership predicate *is* the lookup query, closing 8 IDOR vulnerabilities as a class rather than one at a time
 - Every LLM-generated meal plan gated behind deterministic verification: macros recomputed from the food database, hallucinated items structurally excluded, trainer approval before anything is written
 - Replaced a third-party booking vendor with an owned scheduler: webhook-driven two-way Google Calendar sync, HMAC-tokened client self-reschedule, full per-event audit log
 
 ### Umbra Studio platform · [umbrastudio.io](https://umbrastudio.io)
-Internal business platform — Next.js, Neon Postgres, 47 tables, 27 tRPC routers, 206 procedures.
-Tool-using Claude agent (24 tools) under a bounded loop with per-tool error containment, and LLM
-cost governance: seven providers priced across five billing units, pre-call budget authorization,
-per-call accounting.
+Internal business platform on Next.js and Neon Postgres: 47 tables, 27 tRPC routers, 206
+procedures. Tool-using Claude agent (24 tools) under a bounded loop with per-tool error
+containment, and LLM cost governance covering seven providers priced across five billing units,
+pre-call budget authorization, and per-call accounting.
 
 Also the origin of a decision I stand behind: I removed an autonomous multi-agent outreach
-system after it fabricated claims about real prospects — deleted 11,197 lines across 77 files,
-suppressed the affected cohort, repaired 617 records, and replaced autonomy with
+system after it fabricated claims about real prospects, deleting 11,197 lines across 77 files,
+suppressing the affected cohort, repairing 617 records, and replacing autonomy with
 typed-confirmation gates and draft review.
 
-### CareBase AI — multi-tenant RAG platform for home care operations · [carebaseai.vercel.app](https://carebaseai.vercel.app)
+### CareBase AI, multi-tenant RAG platform for home care operations · [carebaseai.vercel.app](https://carebaseai.vercel.app)
 Section-aware chunking that never splits a care procedure mid-step, intent-conditioned reranking
-with neighbor-chunk stitching, permission-scoped retrieval at the vector layer, per-tenant OAuth
-document sync (SharePoint / Google Drive) with credentials encrypted at rest. 148 automated
-tests; an LLM evaluation harness scoring responses against a golden query set.
+with neighbor-chunk stitching, permission-scoped retrieval at the vector layer, and per-tenant
+OAuth document sync (SharePoint, Google Drive) with credentials encrypted at rest. 148 automated
+tests, plus an LLM evaluation harness scoring responses against a golden query set.
 
-### Eidos Fit — AI fitness platform · [eidosfit.com](https://eidosfit.com)
+### Eidos Fit, AI fitness platform · [eidosfit.com](https://eidosfit.com)
 Flutter client against Firebase Cloud Functions. A durable-execution state machine on Firestore
 survives the 540-second serverless ceiling by checkpointing week-by-week and resuming from the
-last completed week — and the model's video form-analysis scores are discarded and recomputed
+last completed week, and the model's video form-analysis scores are discarded and recomputed
 server-side from issue severities.
 
 ### Client delivery · [anarchyresearch.com](https://anarchyresearch.com)
