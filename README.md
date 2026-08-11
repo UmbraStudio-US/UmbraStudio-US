@@ -48,7 +48,7 @@ with neighbor-chunk stitching, permission-scoped retrieval at the vector layer, 
 document sync (SharePoint / Google Drive) with credentials encrypted at rest. 148 automated
 tests; an LLM evaluation harness scoring responses against a golden query set.
 
-### Eidos Fit — AI fitness platform *(build complete; not currently deployed)*
+### Eidos Fit — AI fitness platform · [eidosfit.com](https://eidosfit.com)
 Flutter client against Firebase Cloud Functions. A durable-execution state machine on Firestore
 survives the 540-second serverless ceiling by checkpointing week-by-week and resuming from the
 last completed week — and the model's video form-analysis scores are discarded and recomputed
