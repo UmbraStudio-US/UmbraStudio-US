@@ -11,6 +11,30 @@ multiplayer game service, and a from-scratch Unity client, all built and operate
 
 ---
 
+## How I work
+
+Everything below was built by multi-agent development systems I design and operate. The practice,
+not the output, is the part that transfers:
+
+- **Capability-based tool grants.** Read-only research and audit roles are structurally denied
+  write access; one agent may spawn agents; integration, deployment, and issue closure stay with
+  the orchestrator. Autonomy is bounded by what a role *can* do, not by what it's told not to do.
+- **Version-controlled agent policy, not convention.** Committed agent definitions with
+  role-scoped toolsets, an issue-driven two-role pipeline whose stage labels appear on every issue
+  in the repo, and model attribution recorded in commit trailers. Roughly 40 parallel lanes with
+  zero file collisions at peak.
+- **Deterministic verification over trust.** Where tests are impractical, I verify by
+  byte-identity: pinned encryption parameters so identical sources compile to byte-identical
+  artifacts, round-trip validators requiring byte equality, and an acceptance rule that changed
+  behavior must be *observed*, not inferred. Where a model produces a number, code recomputes it —
+  macros recalculated from the database, form-analysis scores recomputed server-side from issue
+  severities.
+- **A kill switch that gets used.** I removed an autonomous outreach system after it fabricated
+  claims about real prospects, and shelved a finished product when a platform capability erased
+  its differentiator. Knowing when to stop is part of the method.
+
+---
+
 ## Systems
 
 ### Chaos Pirates — live multiplayer game platform · [chaospirates.com](https://chaospirates.com)
@@ -58,18 +82,6 @@ server-side from issue severities.
 Live commerce and point-of-sale platform: dual-path payment-processor outage detection designed
 to fail open, hosted checkout with HMAC-signed callbacks, card data removed from application
 servers.
-
----
-
-## How I work
-
-Multi-agent development with capability-based tool grants — read-only research and audit roles
-structurally denied write access, integration and deployment reserved to the orchestrator. The
-workflow is version-controlled policy, not convention: committed agent definitions, an
-issue-driven two-role pipeline, model attribution in commit trailers. Verification leans on
-determinism and byte-identity — pinned encryption parameters so identical sources compile to
-byte-identical artifacts, and an acceptance rule that changed behavior must be observed, not
-inferred.
 
 ---
 
