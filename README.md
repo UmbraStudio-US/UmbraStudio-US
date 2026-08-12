@@ -8,6 +8,9 @@ multiplayer game service, and a from-scratch Unity client, all built and operate
 > Publishing a live game server's source hands exploiters a map; publishing a payment platform's
 > auth internals does the same. I'm happy to screen-share any codebase live. Walkthroughs on
 > request: [miles@umbrastudio.io](mailto:miles@umbrastudio.io)
+>
+> **Want to see something running instead?** Gameplay footage of the Unity client, on mobile, at
+> [youtube.com/@chaospirates](https://www.youtube.com/@chaospirates)
 
 ---
 
@@ -37,7 +40,7 @@ not the output, is the part that transfers:
 
 ## Systems
 
-### Chaos Pirates, live multiplayer game platform · [chaospirates.com](https://chaospirates.com)
+### Chaos Pirates, live multiplayer game platform · [chaospirates.com](https://chaospirates.com) · [gameplay footage](https://www.youtube.com/@chaospirates)
 Inherited C++ four-daemon server cluster (five world processes, 31 maps) plus a from-scratch
 Unity desktop/mobile client: roughly 150,000 lines of original C# implementing the server's
 immutable 600-opcode binary protocol.
